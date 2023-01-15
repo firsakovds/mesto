@@ -1,9 +1,10 @@
 .element__group {
-display: flex;
-flex-direction: row;
+display: grid;
+grid-template-columns: auto 22px;
 max-width: 246px;
-justify-content: space-between;
+
 margin-left: 21px;
-margin-top: 25px;
-margin-bottom: 31px;
+margin-top: 20px;
+margin-bottom: 26px;
+margin-right: 15px;
 }

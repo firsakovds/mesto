@@ -6,3 +6,11 @@
   margin-left: 30px;
   align-self: center;
 }
+@media (max-width: 905px) {
+  .profile__info {
+    
+    max-width: 282px;
+    
+
+  }
+}

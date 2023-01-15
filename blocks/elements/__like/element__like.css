@@ -1,8 +1,16 @@
 .element__like {
-  max-width: 22px;
-  max-height: 19px;
-  margin: 0;
-  padding-top: 5px;
-  padding-right: 5px;
-  
+  padding: 0;
+  width: 22px;
+  height: 19px;
+  margin-top: 5px;
+  margin-right: 5px;
+  background-image: url(/images/element__like-none.png);
+background-color: transparent;
+background-size: cover;
+cursor: pointer;
+border: none;
+
+}
+.element__like:hover {
+  opacity: 0.6;
 }

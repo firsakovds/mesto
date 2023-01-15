@@ -3,3 +3,8 @@
   margin-top: 40px;
   
 }
+@media (max-width: 905px) {
+  .content{
+    margin-top: 42px;
+  } 
+}

@@ -1,19 +1,19 @@
-.footer__copyright {
-  margin: 0 ;
-  max-width: 318px;
+.popup__save_text {
+  margin: 0 auto;
   font-family: 'Inter';
 font-style: normal;
 font-weight: 400;
 font-size: 18px;
 line-height: 22px;
 
-color: #545454;
 
+color: #FFFFFF;
+margin-top: 14px;
+margin-bottom: 18px;
 }
 @media (max-width: 905px) {
-  .footer__copyright {
+  .popup__save_text {
     font-size: 14px;
 line-height: 17px;
-    
   }
 }
