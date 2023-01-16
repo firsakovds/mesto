@@ -8,11 +8,11 @@ width: 100%;
 align-items: center;
 background: rgba(0, 0, 0, 0.5);
 z-index: 1;
-/*display: none;*/
+display: none;
 
 }
 @media (max-width: 905px) {
   .popup {
-    
+
   }
 }
