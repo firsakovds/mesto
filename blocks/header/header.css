@@ -7,6 +7,12 @@
   align-items: flex-start;
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
+@media (max-width: 906px) {
+  .header {
+    max-width: 500px;
+    padding-left: 40px;
+  }
+}
 @media (max-width: 320px) {
   .header {
     max-width: 320px;
