@@ -1,9 +1,4 @@
 .content {
   margin: 0 auto;
-  margin-top: 40px;
+  margin-top: 41px;
   }
-@media (max-width: 320px) {
-  .content{
-    margin-top: 42px;
-  }
-}
