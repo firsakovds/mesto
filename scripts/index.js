@@ -13,7 +13,7 @@ let editBut = profile.querySelector('.profile__edit-button')
 let nameHero = profile.querySelector('.profile__title')
 let profHero = profile.querySelector('.profile__subtitle')
 // выбираем необходимы элементы блока popup (кнопку закрытия popup)
-let popupCloseBut = popUp.querySelector('.popup__button-close')
+let popupCloseBut = popUp.querySelector('.popup__button-close_type_profile')
 //описываем реакцию на КЛИК кнопок profile__edit-button и popup__button-close
 editBut.addEventListener('click', openPopup)
 popupCloseBut.addEventListener('click', closePopup)
@@ -33,3 +33,27 @@ function handleFormSubmit (evt) {
     closePopup()
 }
 formElement.addEventListener('submit', handleFormSubmit);
+
+
+//popup добавления карточки
+//ищем форму в DOM
+const popUpAdd = document.querySelector('.popup__add-card');
+const formElementAdd = popUpAdd.querySelector('.popup__form-add');
+//находим поля формы add 
+const spaceAdd = formElementAdd.querySelector('.popup__input_place_space');
+const linkAdd = formElementAdd.querySelector('.popup__input_place_link');
+//Находим кнопку для вызова popup__add-card добавления карточки 
+const ButAdd = profile.querySelector('.profile__add-button');
+// выбираем необходимы элементы блока popup (кнопку закрытия popup)
+let popupCloseButAdd = popUpAdd.querySelector('.popup__button-close_type_add')
+//описываем реакцию на КЛИК кнопок profile__add-button и popup__button-close_type_add
+ButAdd.addEventListener('click', openPopupAdd);
+popupCloseButAdd.addEventListener('click', closePopupAdd);
+
+function openPopupAdd() {
+  popUpAdd.classList.add('popup_opened')
+};
+
+function closePopupAdd() {
+  popUpAdd.classList.remove('popup_opened')
+};
