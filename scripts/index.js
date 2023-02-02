@@ -34,26 +34,77 @@ function handleFormSubmit (evt) {
 }
 formElement.addEventListener('submit', handleFormSubmit);
 
+// ниже идут задания пр5
 
-//popup добавления карточки
-//ищем форму в DOM
+
+
+
+//popup формы добавления карточки
 const popUpAdd = document.querySelector('.popup__add-card');
-const formElementAdd = popUpAdd.querySelector('.popup__form-add');
-//находим поля формы add 
-const spaceAdd = formElementAdd.querySelector('.popup__input_place_space');
-const linkAdd = formElementAdd.querySelector('.popup__input_place_link');
-//Находим кнопку для вызова popup__add-card добавления карточки 
-const ButAdd = profile.querySelector('.profile__add-button');
-// выбираем необходимы элементы блока popup (кнопку закрытия popup)
-let popupCloseButAdd = popUpAdd.querySelector('.popup__button-close_type_add')
-//описываем реакцию на КЛИК кнопок profile__add-button и popup__button-close_type_add
-ButAdd.addEventListener('click', openPopupAdd);
-popupCloseButAdd.addEventListener('click', closePopupAdd);
+//форма карточки в доме
+const formUpAdd = popUpAdd.querySelector('.popup__form-add');
+//кнопкаоткрытия попап карточки
+const buttonAdd = document.querySelector('.profile__add-button');
+//кнопка закрытия попап карточки
+const buttonAddClose = popUpAdd.querySelector('.popup__button-close_type_add');
+//поля ввода попапа карточки
+const titleInput = formUpAdd.querySelector('.popup__input_place_space');
+const linkInput = formUpAdd.querySelector('.popup__input_place_link');
+//кнопка создать карточку
+const buttonCreateNewCard = formUpAdd.querySelector('.popup__create');
+//темплейт нового места
+const cardTemplate = document.querySelector('#elements__card').content;
+const cardContainer = document.querySelector('.elements');
 
-function openPopupAdd() {
+
+
+
+
+
+//открытие попап карточки
+buttonAdd.addEventListener('click', openPopupAdd);
+
+function openPopupAdd () {
   popUpAdd.classList.add('popup_opened')
 };
+//закрытие попап карточки
+buttonAddClose.addEventListener('click', closePopupAdd);
 
-function closePopupAdd() {
+function closePopupAdd () {
   popUpAdd.classList.remove('popup_opened')
 };
+
+function createCard (title, link) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardFoto = cardElement.querySelector('.element__foto').src = link;
+  const cardTitle = cardElement.querySelector('.element__title').textContent = title;
+  
+  const cardLike = cardElement.querySelector('.element__like');
+  cardLike.addEventListener('click', function(evt) {
+    evt.target.classList.toggle('element__like_active');
+  });
+  
+  return cardElement; 
+
+}
+
+function handleFormCardAddSubmit (evt)  {
+  evt.preventDefault();
+  cardContainer.prepend(createCard(titleInput.value, linkInput.value));
+  titleInput.value = '';
+  linkInput.value = '';  
+  closePopupAdd();
+}
+
+
+
+
+buttonCreateNewCard.addEventListener('click', function () {
+  const title = document.querySelector('.popup__input_place_space');
+  const link = document.querySelector('.popup__input_place_link');
+  createCard(title.Value, link.Value);
+});
+
+
+
+formUpAdd.addEventListener('submit', handleFormCardAddSubmit);
