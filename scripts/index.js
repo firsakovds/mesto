@@ -56,9 +56,38 @@ const buttonCreateNewCard = formUpAdd.querySelector('.popup__create');
 const cardTemplate = document.querySelector('#elements__card').content;
 const cardContainer = document.querySelector('.elements');
 
+//дефолтный массив
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
-
-
+//перебираем массив и создаем дефолтные карточки
+initialCards.forEach(function(item) {
+  cardContainer.append(createCard(item.name, item.link));
+});
 
 
 //открытие попап карточки
@@ -76,17 +105,28 @@ function closePopupAdd () {
 
 function createCard (title, link) {
   const cardElement = cardTemplate.cloneNode(true);
+  //переменные поле и ссылка
   const cardFoto = cardElement.querySelector('.element__foto').src = link;
   const cardTitle = cardElement.querySelector('.element__title').textContent = title;
-  
+  //реакция на клик по лайку
   const cardLike = cardElement.querySelector('.element__like');
   cardLike.addEventListener('click', function(evt) {
     evt.target.classList.toggle('element__like_active');
   });
-  
+  //реакция на клик по корзине  
+  const basketCard = cardElement.querySelector('.element__delete-button');
+  basketCard.addEventListener('click', function(evt) {  
+    evt.target.closest('.element').remove();
+  });
   return cardElement; 
 
 }
+
+
+
+
+
+
 
 function handleFormCardAddSubmit (evt)  {
   evt.preventDefault();
@@ -108,3 +148,14 @@ buttonCreateNewCard.addEventListener('click', function () {
 
 
 formUpAdd.addEventListener('submit', handleFormCardAddSubmit);
+
+
+// const defaultCard = initialCards[];
+
+
+
+  
+  
+  
+
+
