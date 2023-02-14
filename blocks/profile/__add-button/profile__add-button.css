@@ -31,3 +31,6 @@
     background-size: 6%;
   }
 }
+.profile__add-button:focus {
+  outline: none;
+}

@@ -21,3 +21,6 @@
     margin-top: 8px;
   }
 }
+.profile__edit-button:focus {
+  outline:  none;
+}

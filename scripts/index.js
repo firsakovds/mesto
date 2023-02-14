@@ -26,12 +26,20 @@ const popupImageClose = popupImage.querySelector('.popup__button-close_type_imag
 //темплейт нового места
 const cardTemplate = document.querySelector('#elements__card').content
 const cardContainer = document.querySelector('.elements')
+
+
+
+
+
+
 //функции открытия и закрытия попапов
 function openPopup(popup) {
   popup.classList.add('popup_opened')
+  addListenerKeydown()
 }
 function closePopup(popup) {
   popup.classList.remove('popup_opened')
+  removeListenerKeydown()
 }
 //функция открытия попап профиля
 function openProfilePopup () {
@@ -113,9 +121,28 @@ formUpAdd.addEventListener('submit', handleFormCardAddSubmit)
 
 
 
-
-
-
+// функция закрытия попап по нажатию esc
+function popupCloseEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popupActive = document.querySelector('.popup_opened')
+    closePopup(popupActive)
+    
+  }
+  
+}
+//слушатель на нажатие 
+function addListenerKeydown() {
+  window.addEventListener('keydown', popupCloseEsc)
+}
+function removeListenerKeydown() {
+  window.removeEventListener('keydown', popupCloseEsc)
+}
+//слушатель клика вне области попапа
+window.addEventListener('click', function(e) {
+  if (e.target.closest('.popup')) {
+    closePopup(e.target)
+  }
+})
 
 
 
