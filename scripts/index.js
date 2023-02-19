@@ -2,10 +2,11 @@ const profile = document.querySelector('.profile')
 //необходимые данные
 const nameHero = profile.querySelector('.profile__title')
 const profHero = profile.querySelector('.profile__subtitle')
-//нашли 3 попапа
+//нашли попапы
 const popupEditProfile = document.querySelector('.popup_type_edit-profile')
 const popUpAdd = document.querySelector('.popup_type_add-card')
 const popupImage = document.querySelector('.popup_type_image-closer')
+const popupsAll = document.querySelectorAll('.popup')
 //ищем в них формы
 const formElementEdit = popupEditProfile.querySelector('.popup__form')
 const formUpAdd = popUpAdd.querySelector('.popup__form_type_add')
@@ -30,9 +31,7 @@ const cardTemplate = document.querySelector('#elements__card').content
 const cardContainer = document.querySelector('.elements')
 //функции открытия и закрытия попапов
 function openPopup(popup) {
-  popup.classList.add('popup_opened')
-  popupButProfileInvalid.disabled = true
-  popupButFormAddInvalid.disabled = true
+  popup.classList.add('popup_opened')  
   addListenerKeydown()
 }
 function closePopup(popup) {
@@ -43,14 +42,16 @@ function closePopup(popup) {
 function openProfilePopup () {
   nameInput.value = nameHero.textContent
   jobInput.value = profHero.textContent
+  popupButProfileInvalid.disabled = true
   openPopup(popupEditProfile)
 }
 //функция закрытия попап профиля
-function closeProfilePopup () {
+function closeProfilePopup () {  
   closePopup(popupEditProfile)
 }
 //функции открытия попапа новой карточки
-function openPopupAdd () {  
+function openPopupAdd () {
+  popupButFormAddInvalid.disabled = true
   openPopup(popUpAdd)
 }
 //функция закрытия новой карточки
@@ -126,9 +127,11 @@ function addListenerKeydown() {
 function removeListenerKeydown() {
   window.removeEventListener('keydown', popupCloseEsc)
 }
-//слушатель клика вне области попапа
-window.addEventListener('click', function(e) {
-  if (e.target.closest('.popup')) {
-    closePopup(e.target)
-  }
+//слушатель клика вне области всех попапов
+popupsAll.forEach((popup) => {
+  popup.addEventListener('click', function(e) {
+    if (e.target.closest('.popup')) {
+      closePopup(e.target)
+    }
+  })
 })

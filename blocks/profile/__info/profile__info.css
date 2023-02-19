@@ -4,7 +4,7 @@
   margin: 0;
   max-width: 336px;
   margin-left: 30px;
-  align-self: center;
+  align-self: center;  
 }
 @media (max-width: 905px) {
   .profile__info {
