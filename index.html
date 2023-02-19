@@ -42,21 +42,64 @@
   <div class="popup popup_type_edit-profile">
     <div class="popup__container">
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form name="popup1" class="popup__form">
-        <input type="text" name="input-name" placeholder="Введите имя" class="popup__input popup__input_place_name">
-        <input type="text" name="input-job" placeholder="Введите род деятельности" class="popup__input popup__input_place_job">
-        <button type="submit" class="popup__save-profile">Сохранить</button>
+      <form name="formProfile" class="popup__form popup__form_type_profile" >
+        <fieldset class="popup__fielset">
+          <input 
+          type="text" 
+          name="input-name"
+          id="input-name"
+          placeholder="Введите имя" 
+          class="popup__input popup__input_place_name"
+          minlength="2"
+          maxlength="40"
+          title="Длина поля должна быть 2 и более символов и менее или равно 40"
+          required>
+          <span class="popup__error popup__error_type_name"></span>
+          <input 
+            type="text" 
+            name="inputJob"
+            id="input-job"
+            placeholder="Введите род деятельности" 
+            class="popup__input popup__input_place_job"
+            minlength="2"
+            maxlength="200"
+            title="Длина поля должна быть 2 и более символов и менее или равно 200"
+            required>
+            <span class="popup__error popup__error_type_job"></span>
+          <button type="submit" class="popup__button popup__save-profile" >Сохранить</button>
+        </fieldset>        
       </form>      
       <button type="button" class="popup__button-close popup__button-close_type_profile"></button>
     </div>
   </div>
   <div class="popup popup_type_add-card ">
-    <div class="popup__container">
+    <div class="popup__container">      
       <h3 class="popup__title">Новое место</h3>
-      <form name="popup2" class="popup__form-add">
-        <input type="text" name="input-space" placeholder="Название" class="popup__input popup__input_place_space">
-        <input type="text" name="input-link" placeholder="Ссылка на картинку" class="popup__input popup__input_place_link">
-        <button type="submit" class="popup__create">Создать</button>
+      <form name="place" class="popup__form popup__form_type_add">
+        <fieldset class="popup__fielset">
+          <input type="text"
+          name="inputSpace"
+          id="input-space" 
+          placeholder="Название" 
+          class="popup__input popup__input_place_space"
+          minlength="2"
+          maxlength="30"
+          title="Длина поля должна быть 2 и более символов и менее или равно 30"
+          required
+          />
+          <span class="popup__error popup__error_type_space"></span>
+          <input 
+            type="url" 
+            name="inputLink" 
+            id="input-link"
+            placeholder="Ссылка на картинку" 
+            class="popup__input popup__input_place_link"
+            title="Введите адрес сайта"
+            required
+            />
+            <span class="popup__error popup__error_type_link"></span>
+          <button type="submit" class="popup__button popup__create">Создать</button>
+        </fieldset>        
       </form>      
       <button type="button" class="popup__button-close popup__button-close_type_add"></button>
     </div>    
@@ -68,7 +111,8 @@
       <button type="button" class="popup__button-close popup__button-close_type_image"></button>
     </div>    
   </div>
-  <script src="./scripts/cards.js"></script>
-  <script src="./scripts/index.js"></script>
+  <script defer src="./scripts/cards.js"></script>
+  <script defer src="./scripts/validate.js"></script>
+  <script defer src="./scripts/index.js"></script>
 </body>
 </html>

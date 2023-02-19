@@ -8,7 +8,7 @@ const popUpAdd = document.querySelector('.popup_type_add-card')
 const popupImage = document.querySelector('.popup_type_image-closer')
 //ищем в них формы
 const formElementEdit = popupEditProfile.querySelector('.popup__form')
-const formUpAdd = popUpAdd.querySelector('.popup__form-add')
+const formUpAdd = popUpAdd.querySelector('.popup__form_type_add')
 //данные попапа карточки
 const popupFoto =  popupImage.querySelector('.popup__photo')
 const popupImageText = popupImage.querySelector('.popup__photo-text')
@@ -23,22 +23,20 @@ const popupCloseButEdit = popupEditProfile.querySelector('.popup__button-close_t
 const buttonAdd = document.querySelector('.profile__add-button')
 const buttonAddClose = popUpAdd.querySelector('.popup__button-close_type_add')
 const popupImageClose = popupImage.querySelector('.popup__button-close_type_image')
+const popupButProfileInvalid = document.querySelector('.popup__save-profile')
+const popupButFormAddInvalid = document.querySelector('.popup__create')
 //темплейт нового места
 const cardTemplate = document.querySelector('#elements__card').content
 const cardContainer = document.querySelector('.elements')
-
-
-
-
-
-
 //функции открытия и закрытия попапов
 function openPopup(popup) {
   popup.classList.add('popup_opened')
+  popupButProfileInvalid.disabled = true
+  popupButFormAddInvalid.disabled = true
   addListenerKeydown()
 }
 function closePopup(popup) {
-  popup.classList.remove('popup_opened')
+  popup.classList.remove('popup_opened')  
   removeListenerKeydown()
 }
 //функция открытия попап профиля
@@ -52,7 +50,7 @@ function closeProfilePopup () {
   closePopup(popupEditProfile)
 }
 //функции открытия попапа новой карточки
-function openPopupAdd () {
+function openPopupAdd () {  
   openPopup(popUpAdd)
 }
 //функция закрытия новой карточки
@@ -114,21 +112,12 @@ function handleFormCardAddSubmit (evt)  {
 }
 formElementEdit.addEventListener('submit', handleFormSubmit)
 formUpAdd.addEventListener('submit', handleFormCardAddSubmit)
-
-
-
-
-
-
-
-// функция закрытия попап по нажатию esc
+ //функция закрытия попап по нажатию esc
 function popupCloseEsc(evt) {
-  if (evt.key === 'Escape') {
+ if (evt.key === 'Escape') {
     const popupActive = document.querySelector('.popup_opened')
     closePopup(popupActive)
-    
-  }
-  
+  }  
 }
 //слушатель на нажатие 
 function addListenerKeydown() {
@@ -143,6 +132,3 @@ window.addEventListener('click', function(e) {
     closePopup(e.target)
   }
 })
-
-
-

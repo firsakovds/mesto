@@ -1,4 +1,5 @@
-.popup__form-add {
+.popup__fielset {
+  border: 0;
   display: flex;
   flex-direction: column;
 }
