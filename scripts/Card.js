@@ -4,7 +4,7 @@ export  default class Card {
   constructor(dataCard, selectorTemlate) {
     this._title = dataCard.name;
     this._link = dataCard.link;
-    this._selectorTemlate = selectorTemlate;    
+    this._selectorTemlate = selectorTemlate;
   }
   //клонировали и получили разметку 
   _cardTemplate() {

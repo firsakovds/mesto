@@ -1,7 +1,6 @@
 import {initialCards} from "./cards.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
-
 const profile = document.querySelector('.profile')
 //необходимые данные
 const nameHero = profile.querySelector('.profile__title')
@@ -33,6 +32,14 @@ const popupButFormAddInvalid = document.querySelector('.popup__create')
 //темплейт нового места
 const cardTemplate = document.querySelector('#elements__card').content
 const cardContainer = document.querySelector('.elements')
+//все настройки для валидации
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',  
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}; 
 //функции открытия и закрытия попапов
 export function openPopup(popup) {
   popup.classList.add('popup_opened')  
@@ -65,34 +72,24 @@ function closePopupAdd () {
 function closePopupImage () {
   closePopup(popupImage)
 }
-
-
 //копии
 function createNewCard(dataCard, selectorTemlate) {
-  const card = new Card(dataCard, selectorTemlate);
-  
+  const card = new Card(dataCard, selectorTemlate);  
   return card.createCard()
 }
 function addCard(dataCard, selectorTemlate) {
  const cardElement = createNewCard(dataCard, selectorTemlate)
   cardContainer.prepend(cardElement)
 }
-
 //перебираем массив и создаем дефолтные карточки
 initialCards.forEach(function(item) {
   addCard(item, '#elements__card')
 })
-
-
-
-
-
-
-
-//тут была функция креате кард
-
-
-
+//копии валидации
+const profValid = new FormValidator(config, formElementEdit)
+const editValid = new FormValidator(config, formUpAdd)
+profValid.enableValidation()
+editValid.enableValidation()
 //клики
 buttonAddClose.addEventListener('click', closePopupAdd)
 buttonAdd.addEventListener('click', openPopupAdd)
@@ -140,3 +137,4 @@ popupsAll.forEach((popup) => {
     }
   })
 })
+
