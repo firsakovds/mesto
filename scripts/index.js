@@ -1,3 +1,7 @@
+import {initialCards} from "./cards.js";
+import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
+
 const profile = document.querySelector('.profile')
 //необходимые данные
 const nameHero = profile.querySelector('.profile__title')
@@ -5,14 +9,14 @@ const profHero = profile.querySelector('.profile__subtitle')
 //нашли попапы
 const popupEditProfile = document.querySelector('.popup_type_edit-profile')
 const popUpAdd = document.querySelector('.popup_type_add-card')
-const popupImage = document.querySelector('.popup_type_image-closer')
+export const popupImage = document.querySelector('.popup_type_image-closer')
 const popupsAll = document.querySelectorAll('.popup')
 //ищем в них формы
 const formElementEdit = popupEditProfile.querySelector('.popup__form')
 const formUpAdd = popUpAdd.querySelector('.popup__form_type_add')
 //данные попапа карточки
-const popupFoto =  popupImage.querySelector('.popup__photo')
-const popupImageText = popupImage.querySelector('.popup__photo-text')
+export const popupFoto =  popupImage.querySelector('.popup__photo')
+export const popupImageText = popupImage.querySelector('.popup__photo-text')
 // Находим в формах поля ввода
 const nameInput = formElementEdit.querySelector('.popup__input_place_name')
 const jobInput = formElementEdit.querySelector('.popup__input_place_job')
@@ -30,7 +34,7 @@ const popupButFormAddInvalid = document.querySelector('.popup__create')
 const cardTemplate = document.querySelector('#elements__card').content
 const cardContainer = document.querySelector('.elements')
 //функции открытия и закрытия попапов
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add('popup_opened')  
   addListenerKeydown()
 }
@@ -61,37 +65,34 @@ function closePopupAdd () {
 function closePopupImage () {
   closePopup(popupImage)
 }
+
+
+//копии
+function createNewCard(dataCard, selectorTemlate) {
+  const card = new Card(dataCard, selectorTemlate);
+  
+  return card.createCard()
+}
+function addCard(dataCard, selectorTemlate) {
+ const cardElement = createNewCard(dataCard, selectorTemlate)
+  cardContainer.prepend(cardElement)
+}
+
 //перебираем массив и создаем дефолтные карточки
 initialCards.forEach(function(item) {
-  cardContainer.append(createCard(item.name, item.link))
+  addCard(item, '#elements__card')
 })
-function createCard (title, link) {
-  const cardElement = cardTemplate.cloneNode(true)
-  //переменные поле и ссылка
-  const cardFoto = cardElement.querySelector('.element__foto')
-  const cardTitle = cardElement.querySelector('.element__title')
-  const cardLink = cardFoto.src = link
-  const cardLinkAlt = cardFoto.alt = title
-  const cardName = cardTitle.textContent = title
-  //реакция на клик по лайку
-  const cardLike = cardElement.querySelector('.element__like')
-  cardLike.addEventListener('click', function(evt) {
-    evt.target.classList.toggle('element__like_active')
-  })
-  //реакция на клик по корзине  
-  const basketCard = cardElement.querySelector('.element__delete-button')
-  basketCard.addEventListener('click', function(evt) {
-    evt.target.closest('.element').remove()
-  })
-  //открытие картинки
-  cardFoto.addEventListener('click', function() {
-    openPopup(popupImage)
-    popupFoto.src = cardLink
-    popupFoto.alt = cardLinkAlt
-    popupImageText.textContent = cardName
-  });
-  return cardElement
-}
+
+
+
+
+
+
+
+//тут была функция креате кард
+
+
+
 //клики
 buttonAddClose.addEventListener('click', closePopupAdd)
 buttonAdd.addEventListener('click', openPopupAdd)
@@ -107,7 +108,11 @@ function handleFormSubmit (evt) {
 }
 function handleFormCardAddSubmit (evt)  {
   evt.preventDefault()
-  cardContainer.prepend(createCard(titleInput.value, linkInput.value))
+  const data = {
+    name: titleInput.value,
+    link: linkInput.value
+  }
+  addCard(data, '#elements__card')
   formUpAdd.reset()
   closePopupAdd()
 }
