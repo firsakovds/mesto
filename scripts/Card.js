@@ -1,10 +1,9 @@
-//можно обойтись без импорта попапов, но тогда надо было функцию открытия делать ВНЕ карточки в пр6
-import {openPopup, popupImage, popupFoto, popupImageText} from './index.js'
 export  default class Card {
-  constructor(dataCard, selectorTemlate) {
+  constructor(dataCard, selectorTemlate, handleOpenPopup) {
     this._title = dataCard.name;
     this._link = dataCard.link;
     this._selectorTemlate = selectorTemlate;
+    this._handleOpenPopup= handleOpenPopup;
   }
   //клонировали и получили разметку 
   _cardTemplate() {
@@ -13,34 +12,29 @@ export  default class Card {
   }
   //приватный метод удаления карточки
   _deleteCard = () => {
-    this._basketCard .closest('.element').remove()
+    this._cardElement.remove()
+    this._cardElement = null
   }
   //приватный метод лайка
-  _bigLike = () => {
+  _changeLike = () => {
     this._cardLike.classList.toggle('element__like_active')
-  }
+  }  
  //приватный метод слушителя
   _eventListeners () {
     this._cardElement.querySelector('.element__delete-button').addEventListener('click',this._deleteCard)
-    this._cardElement.querySelector('.element__like').addEventListener('click',this._bigLike)
-    this._cardFoto.addEventListener('click', () => {
-      openPopup(popupImage);
-      popupFoto.src = this._cardLink
-      popupFoto.alt = this._cardLinkAlt
-      popupImageText.textContent = this._cardName      
-    });
+    this._cardElement.querySelector('.element__like').addEventListener('click',this._changeLike)    
+    this._cardElement.querySelector('.element__foto').addEventListener('click', () => { 
+      this._handleOpenPopup(this._title, this._link) 
+    });  
   }
   //публичный метод создания карточки
   createCard() {
-    this._cardElement = this._cardTemplate();
+    this._cardElement = this._cardTemplate()
     //переменные поле и ссылка
-    this._cardFoto = this._cardElement.querySelector('.element__foto')
-    this._cardTitle = this._cardElement.querySelector('.element__title')
-    this._cardLink = this._cardFoto.src = this._link
-    this._cardLinkAlt = this._cardFoto.alt = this._title
-    this._cardName = this._cardTitle.textContent = this._title
-    this._cardLike = this._cardElement.querySelector('.element__like')
-    this._basketCard = this._cardElement.querySelector('.element__delete-button')
+    this._cardElement.querySelector('.element__foto').src = this._link
+    this._cardElement.querySelector('.element__foto').alt = this._title
+    this._cardElement.querySelector('.element__title').textContent = this._title
+    this._cardLike = this._cardElement.querySelector('.element__like')   
     this._eventListeners()
     return this._cardElement
   }

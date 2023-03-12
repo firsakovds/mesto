@@ -23,14 +23,8 @@ const titleInput = formUpAdd.querySelector('.popup__input_place_space')
 const linkInput = formUpAdd.querySelector('.popup__input_place_link')
 //кнопки
 const editBut = profile.querySelector('.profile__edit-button')
-const popupCloseButEdit = popupEditProfile.querySelector('.popup__button-close_type_profile')
 const buttonAdd = document.querySelector('.profile__add-button')
-const buttonAddClose = popUpAdd.querySelector('.popup__button-close_type_add')
-const popupImageClose = popupImage.querySelector('.popup__button-close_type_image')
-const popupButProfileInvalid = document.querySelector('.popup__save-profile')
-const popupButFormAddInvalid = document.querySelector('.popup__create')
 //темплейт нового места
-const cardTemplate = document.querySelector('#elements__card').content
 const cardContainer = document.querySelector('.elements')
 //все настройки для валидации
 const config = {
@@ -46,35 +40,29 @@ export function openPopup(popup) {
   addListenerKeydown()
 }
 function closePopup(popup) {
-  popup.classList.remove('popup_opened')  
+  popup.classList.remove('popup_opened')
   removeListenerKeydown()
 }
 //функция открытия попап профиля
 function openProfilePopup () {
   nameInput.value = nameHero.textContent
   jobInput.value = profHero.textContent
-  popupButProfileInvalid.disabled = true
   openPopup(popupEditProfile)
-}
-//функция закрытия попап профиля
-function closeProfilePopup () {  
-  closePopup(popupEditProfile)
+  profValid.resetValidation()
 }
 //функции открытия попапа новой карточки
 function openPopupAdd () {
-  popupButFormAddInvalid.disabled = true
+  formUpAdd.reset()
   openPopup(popUpAdd)
+  editValid.resetValidation() 
 }
 //функция закрытия новой карточки
 function closePopupAdd () {
   closePopup(popUpAdd)
 }
-function closePopupImage () {
-  closePopup(popupImage)
-}
 //копии
 function createNewCard(dataCard, selectorTemlate) {
-  const card = new Card(dataCard, selectorTemlate);  
+  const card = new Card(dataCard, selectorTemlate, handleOpenPopup);  
   return card.createCard()
 }
 function addCard(dataCard, selectorTemlate) {
@@ -91,11 +79,12 @@ const editValid = new FormValidator(config, formUpAdd)
 profValid.enableValidation()
 editValid.enableValidation()
 //клики
-buttonAddClose.addEventListener('click', closePopupAdd)
 buttonAdd.addEventListener('click', openPopupAdd)
 editBut.addEventListener('click', openProfilePopup)
-popupCloseButEdit.addEventListener('click', closeProfilePopup)
-popupImageClose.addEventListener('click', closePopupImage)
+document.querySelectorAll('.popup__button-close').forEach(button => {
+  const buttonsPopup = button.closest('.popup') // нашли родителя с нужным классом
+  button.addEventListener('click', () => closePopup(buttonsPopup)) // закрыли попап
+});
 //обработчики
 function handleFormSubmit (evt) {
   evt.preventDefault()
@@ -103,7 +92,7 @@ function handleFormSubmit (evt) {
   profHero.textContent = jobInput.value
   closePopup(popupEditProfile)
 }
-function handleFormCardAddSubmit (evt)  {
+function handleFormCardAddSubmit (evt) {
   evt.preventDefault()
   const data = {
     name: titleInput.value,
@@ -124,10 +113,10 @@ function popupCloseEsc(evt) {
 }
 //слушатель на нажатие 
 function addListenerKeydown() {
-  window.addEventListener('keydown', popupCloseEsc)
+  document.addEventListener('keydown', popupCloseEsc)
 }
 function removeListenerKeydown() {
-  window.removeEventListener('keydown', popupCloseEsc)
+  document.removeEventListener('keydown', popupCloseEsc)
 }
 //слушатель клика вне области всех попапов
 popupsAll.forEach((popup) => {
@@ -137,4 +126,10 @@ popupsAll.forEach((popup) => {
     }
   })
 })
-
+//функция открытия картинки
+function handleOpenPopup(title, link) {
+  popupFoto.src = link; 
+  popupFoto.alt = title; 
+  popupImageText.textContent = title; 
+  openPopup(popupImage); 
+}  

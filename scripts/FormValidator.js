@@ -6,11 +6,11 @@ export default class FormValidator {
     this._inputErrorClass = config.inputErrorClass 
     this._errorClass = config.errorClass
   }
-  //показать кастомное сообщение об ошибке
-  _seeInputError(input) {
+  //показать сообщение об ошибке
+  _seeInputError(input, errorMessage) {
     const inputError = this._elementForm.querySelector(`#${input.id} + .popup__error`)
     input.classList.add(this._inputErrorClass)
-    inputError.textContent = input.getAttribute('title') 
+    inputError.textContent = errorMessage
     inputError.classList.add(this._errorClass)
   } 
   //убрать сообщение об ошибке
@@ -42,6 +42,12 @@ export default class FormValidator {
       this._buttonSave.removeAttribute('disabled');
     }
   }
+  resetValidation() {
+    this._toggleButtonSave()
+    this._inputs.forEach((input) => {
+      this._hideInputError(input) 
+    });
+  }
   _setInputListenet() {
     this._inputs = Array.from(this._elementForm.querySelectorAll(this._inputSelector))
     this._buttonSave = this._elementForm.querySelector(this._submitButtonSelector)
@@ -54,9 +60,6 @@ export default class FormValidator {
     })
   }
   enableValidation() {
-    this._elementForm.addEventListener('submit', (e) => {
-      e.preventDefault()
-    })
     this._setInputListenet()
   }
 }
