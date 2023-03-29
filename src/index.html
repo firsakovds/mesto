@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <title>Mesto: базовая функциональность</title>  
 </head>
 <body class="page">
  <header class="header">
-   <img class="header__logo" src="./images/header-logo.svg" alt="логотип">   
+   <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="логотип">   
  </header>
  <main class="content">
    <section class="profile">
-     <img class="profile__avatar" src="./images/profile-avatar.png" alt="изображение человека">
+     <img class="profile__avatar" src="<%=require('./images/profile-avatar.png')%>" alt="изображение человека">
      <div class="profile__info">
        <div class="profile__name">
          <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -111,6 +110,6 @@
       <button type="button" class="popup__button-close popup__button-close_type_image"></button>
     </div>    
   </div>
-  <script type="module" src="./scripts/index.js"></script>
+ 
 </body>
 </html>

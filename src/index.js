@@ -1,10 +1,11 @@
-import {initialCards} from './cards.js';
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import Section from './Section.js';
-import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './PopupWithImage.js';
-import UserInfo from './UserInfo.js';
+import './pages/index.css'; 
+import {initialCards} from './scripts/cards.js';
+import Card from './scripts/Card.js';
+import FormValidator from './scripts/FormValidator.js';
+import Section from './scripts/Section.js';
+import PopupWithForm from './scripts/PopupWithForm.js';
+import PopupWithImage from './scripts/PopupWithImage.js';
+import UserInfo from './scripts/UserInfo.js';
 const profile = document.querySelector('.profile')
 //нашли попапы
 const popupEditProfile = document.querySelector('.popup_type_edit-profile')
