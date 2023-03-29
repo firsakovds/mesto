@@ -1,9 +1,9 @@
 export  default class Card {
-  constructor(dataCard, selectorTemlate, handleOpenPopup) {
-    this._title = dataCard.name;
-    this._link = dataCard.link;
+  constructor(dataCard, selectorTemlate, handleCardClick) {
+    this._title = dataCard.inputSpace;
+    this._link = dataCard.inputLink;
     this._selectorTemlate = selectorTemlate;
-    this._handleOpenPopup= handleOpenPopup;
+    this._handleCardClick= handleCardClick;
   }
   //клонировали и получили разметку 
   _cardTemplate() {
@@ -24,7 +24,7 @@ export  default class Card {
     this._cardElement.querySelector('.element__delete-button').addEventListener('click',this._deleteCard)
     this._cardElement.querySelector('.element__like').addEventListener('click',this._changeLike)    
     this._cardElement.querySelector('.element__foto').addEventListener('click', () => { 
-      this._handleOpenPopup(this._title, this._link) 
+      this._handleCardClick(this._title, this._link)       
     });  
   }
   //публичный метод создания карточки
