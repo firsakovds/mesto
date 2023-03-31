@@ -23,16 +23,17 @@ export  default class Card {
   _eventListeners () {
     this._cardElement.querySelector('.element__delete-button').addEventListener('click',this._deleteCard)
     this._cardElement.querySelector('.element__like').addEventListener('click',this._changeLike)    
-    this._cardElement.querySelector('.element__foto').addEventListener('click', () => { 
+    this._cardImage.addEventListener('click', () => { 
       this._handleCardClick(this._title, this._link)       
     });  
   }
   //публичный метод создания карточки
   createCard() {
     this._cardElement = this._cardTemplate()
-    //переменные поле и ссылка
-    this._cardElement.querySelector('.element__foto').src = this._link
-    this._cardElement.querySelector('.element__foto').alt = this._title
+    //переменные поле и ссылка    
+    this._cardImage = this._cardElement.querySelector('.element__foto')
+    this._cardImage.src = this._link
+    this._cardImage.alt = this._title
     this._cardElement.querySelector('.element__title').textContent = this._title
     this._cardLike = this._cardElement.querySelector('.element__like')   
     this._eventListeners()

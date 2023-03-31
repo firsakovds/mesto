@@ -1,36 +1,26 @@
 import './index.css'; 
-import {initialCards} from '../components/cards.js';
 import Card from '../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import UserInfo from '../components/UserInfo.js';
-const profile = document.querySelector('.profile')
-//нашли попапы
-const popupEditProfile = document.querySelector('.popup_type_edit-profile')
-const popUpAdd = document.querySelector('.popup_type_add-card')
-export const popupImage = document.querySelector('.popup_type_image-closer')
-//ищем в них формы
-const formElementEdit = popupEditProfile.querySelector('.popup__form')
-const formUpAdd = popUpAdd.querySelector('.popup__form_type_add')
-//данные попапа карточки
-export const popupFoto =  popupImage.querySelector('.popup__photo')
-export const popupImageText = popupImage.querySelector('.popup__photo-text')
-// Находим в формах поля ввода
-const nameInput = formElementEdit.querySelector('.popup__input_place_name')
-const jobInput = formElementEdit.querySelector('.popup__input_place_job')
-//кнопки
-const editBut = profile.querySelector('.profile__edit-button')
-const buttonAdd = document.querySelector('.profile__add-button')
-//все настройки для валидации
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',  
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
+import {
+  profile,
+  popupEditProfile,
+  popUpAdd,
+  popupImage,
+  formElementEdit,
+  formUpAdd,
+  popupFoto,
+  popupImageText,
+  nameInput,
+  jobInput,
+  editBut,
+  buttonAdd,
+  config,
+  initialCards,
+} from '../utils/constants.js'
 //копии
 const userInfo = new UserInfo({
   nameHero: '.profile__title',
@@ -61,8 +51,7 @@ function createNewCard(dataCard) {
 }
 function handleFormProfSubmit(data) {
   userInfo.setUserInfo(data);
-  popupEditForm.close();
-  console.log(data)
+  popupEditForm.close();  
  }
  function handleOpenPopup(title, link) {
   popupWithImage.open(title, link);
@@ -72,13 +61,13 @@ function handleFormSublitCard(data) {
   popupCardForm.close();
 }
 buttonAdd.addEventListener("click", () => {
-  editValid.enableValidation();
+  editValid.resetValidation();
   popupCardForm.open();
 })
 editBut.addEventListener("click", () => {
   const {name, prof} = userInfo.getUserInfo();
   nameInput.value = name;
   jobInput.value = prof;
-  profValid.enableValidation();
+  profValid.resetValidation();
   popupEditForm.open();
  })
