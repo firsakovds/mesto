@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+  <title>Mesto: базовая функциональность</title>  
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+<body class="page">
+ <header class="header">
+   <img class="header__logo" src="e1792cd1bf55c68d1538.svg" alt="логотип">   
+ </header>
+ <main class="content">
+   <section class="profile">
+     <img class="profile__avatar" src="562483fd2e6aca3c0370.png" alt="изображение человека">
+     <div class="profile__info">
+       <div class="profile__name">
+         <h1 class="profile__title">Жак-Ив Кусто</h1>
+         <button type="button" class="profile__edit-button"></button>
+       </div>
+       <p class="profile__subtitle">Исследователь океана</p>
+     </div>
+     <button type="button" class="profile__add-button"></button>
+    </section>
+   <section class="elements">
+   </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">© 2020 Mesto Russia</p>
+  </footer>
+  <template id="elements__card">
+    <div class="element">
+      <button type="button" class="element__delete-button"></button>
+      <img class="element__foto" src="#" alt="#">
+      <div class="element__group">
+        <h2 class="element__title"></h2>
+        <button type="button" class="element__like"></button>
+      </div>
+     </div>
+  </template>
+  <div class="popup popup_type_edit-profile">
+    <div class="popup__container">
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <form name="formProfile" class="popup__form popup__form_type_profile" >
+        <fieldset class="popup__fielset">
+          <input 
+          type="text" 
+          name="inputName"
+          id="input-name"
+          placeholder="Введите имя" 
+          class="popup__input popup__input_place_name"
+          minlength="2"
+          maxlength="40"
+          title="Длина поля должна быть 2 и более символов и менее или равно 40"
+          required>
+          <span class="popup__error popup__error_type_name"></span>
+          <input 
+            type="text" 
+            name="inputJob"
+            id="input-job"
+            placeholder="Введите род деятельности" 
+            class="popup__input popup__input_place_job"
+            minlength="2"
+            maxlength="200"
+            title="Длина поля должна быть 2 и более символов и менее или равно 200"
+            required>
+            <span class="popup__error popup__error_type_job"></span>
+          <button type="submit" class="popup__button popup__save-profile" >Сохранить</button>
+        </fieldset>        
+      </form>      
+      <button type="button" class="popup__button-close popup__button-close_type_profile"></button>
+    </div>
+  </div>
+  <div class="popup popup_type_add-card ">
+    <div class="popup__container">      
+      <h3 class="popup__title">Новое место</h3>
+      <form name="place" class="popup__form popup__form_type_add">
+        <fieldset class="popup__fielset">
+          <input type="text"
+          name="inputSpace"
+          id="input-space" 
+          placeholder="Название" 
+          class="popup__input popup__input_place_space"
+          minlength="2"
+          maxlength="30"
+          title="Длина поля должна быть 2 и более символов и менее или равно 30"
+          required
+          />
+          <span class="popup__error popup__error_type_space"></span>
+          <input 
+            type="url" 
+            name="inputLink" 
+            id="input-link"
+            placeholder="Ссылка на картинку" 
+            class="popup__input popup__input_place_link"
+            title="Введите адрес сайта"
+            required
+            />
+            <span class="popup__error popup__error_type_link"></span>
+          <button type="submit" class="popup__button popup__create">Создать</button>
+        </fieldset>        
+      </form>      
+      <button type="button" class="popup__button-close popup__button-close_type_add"></button>
+    </div>    
+  </div>
+  <div class="popup popup_type_image-closer">
+    <div class="popup__image-container">
+      <img class="popup__photo" src="#" alt="#">
+      <p class="popup__photo-text"></p>
+      <button type="button" class="popup__button-close popup__button-close_type_image"></button>
+    </div>    
+  </div>
+ 
+</body>
+</html>
