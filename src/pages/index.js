@@ -44,7 +44,7 @@ const userInfo = new UserInfo({
 })
 const cardList = new Section(
   {
-    items: [],//initialCards
+    //items: [],//initialCards
     renderer:  createNewCard,
   },
   '.elements'
