@@ -1,7 +1,7 @@
 export  default class Card {
   constructor(dataCard, selectorTemlate, handleCardClick) {
-    this._title = dataCard.inputSpace;
-    this._link = dataCard.inputLink;
+    this._title = dataCard.name;
+    this._link = dataCard.link;
     this._selectorTemlate = selectorTemlate;
     this._handleCardClick= handleCardClick;
   }

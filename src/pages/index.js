@@ -44,12 +44,12 @@ const userInfo = new UserInfo({
 })
 const cardList = new Section(
   {
-    //items: [],//initialCards
+    items: initialCards,
     renderer:  createNewCard,
   },
   '.elements'
 )
-cardList.renderItem(); 
+//cardList.renderItem(); 
 //копии валидации
 const profValid = new FormValidator(config, formElementEdit);
 const editValid = new FormValidator(config, formUpAdd);
