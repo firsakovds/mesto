@@ -12,6 +12,7 @@
  </header>
  <main class="content">
    <section class="profile">
+    <button class="profile__avatar-button"></button>
      <img class="profile__avatar" src="562483fd2e6aca3c0370.png" alt="изображение человека">
      <div class="profile__info">
        <div class="profile__name">
@@ -35,6 +36,7 @@
       <div class="element__group">
         <h2 class="element__title"></h2>
         <button type="button" class="element__like"></button>
+        <p class="element__like-counter">0</p>
       </div>
      </div>
   </template>
@@ -110,6 +112,36 @@
       <button type="button" class="popup__button-close popup__button-close_type_image"></button>
     </div>    
   </div>
- 
+ <div class="popup popup_type_avatar">
+  <div class="popup__container">      
+    <h3 class="popup__title">Обновить аватар</h3>
+    <form name="avatar" class="popup__form popup__form_type_avatar">
+      <fieldset class="popup__fielset">
+        <input 
+            type="url" 
+            name="avatarLink" 
+            id="input-avatar"
+            placeholder="Ссылка на аватар" 
+            class="popup__input popup__input_avatar_link"
+            title="Введите адрес сайта"
+            required
+            />
+            <span class="popup__error popup__error_type_link"></span>       
+        <button type="submit" class="popup__button popup__save-avatar">Сохранить</button>
+      </fieldset>        
+    </form>      
+    <button type="button" class="popup__button-close popup__button-close_type_add"></button>
+  </div>    
+ </div>
+
+ <div class="popup popup_type_delete">
+  <div class="popup__container">      
+    <h3 class="popup__title">Вы уверены?</h3>
+    <form name="delete" class="popup__form popup__form_type_delete">
+      <button type="submit" class="popup__button popup__delete-avatar">Да</button>
+    </form>      
+    <button type="button" class="popup__button-close popup__button-close_type_add"></button>
+  </div>    
+ </div>
 </body>
 </html>
