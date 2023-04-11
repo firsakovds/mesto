@@ -29,7 +29,7 @@
 /*!*************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar/profile__avatar.css ***!
   \*************************************************************************************************************************************************************************/
-.profile__avatar{display:flex;max-height:120px;max-width:120px}@media (max-width:905px){.profile__avatar{margin:0 auto}}
+.profile__avatar{border-radius:60px;display:flex;max-height:120px;max-width:120px}@media (max-width:905px){.profile__avatar{margin:0 auto}}
 /*!***************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/profile/__avatar-button/profile__avatar-button.css ***!
   \***************************************************************************************************************************************************************************************/
@@ -170,6 +170,18 @@
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__fielset/popup__fielset.css ***!
   \***********************************************************************************************************************************************************************/
 .popup__fielset{border:0;display:flex;flex-direction:column}
+/*!******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__input/_type/popup__input_type_avatar-link.css ***!
+  \******************************************************************************************************************************************************************************************/
+.popup__input_type_avatar-link{margin:23px 0 0}
+/*!************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__save/popup__save_avatar.css ***!
+  \************************************************************************************************************************************************************************/
+.popup__save-avatar{background:#000;border:none;border-radius:2px;color:#fff;cursor:pointer;font-family:Inter,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:400;line-height:22px;margin:39px 0 32px;max-height:50px;max-width:358px;padding-bottom:18px;padding-top:14px}.popup__save-avatar:hover{background:rgba(0,0,0,.8)}@media (max-width:905px){.popup__save-avatar{font-size:14px;line-height:17px;margin-bottom:25px;margin-top:45px;max-height:46px;max-width:238px}}
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/blocks/popup/__delete-card/popup__delete-card.css ***!
+  \*******************************************************************************************************************************************************************************/
+.popup__delete-card{background:#000;border:none;border-radius:2px;color:#fff;cursor:pointer;font-family:Inter,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:400;line-height:22px;margin:16px 0 32px;max-height:50px;max-width:358px;padding-bottom:18px;padding-top:14px}.popup__delete-card:hover{background:rgba(0,0,0,.8)}@media (max-width:905px){.popup__delete-card{font-size:14px;line-height:17px;margin-bottom:16px;margin-top:0;max-height:46px;max-width:238px}}
 /*!*********************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js!./src/pages/index.css ***!
   \*********************************************************************************************************************************************/

@@ -47,7 +47,7 @@
         <fieldset class="popup__fielset">
           <input 
           type="text" 
-          name="inputName"
+          name="name"
           id="input-name"
           placeholder="Введите имя" 
           class="popup__input popup__input_place_name"
@@ -58,7 +58,7 @@
           <span class="popup__error popup__error_type_name"></span>
           <input 
             type="text" 
-            name="inputJob"
+            name="about"
             id="input-job"
             placeholder="Введите род деятельности" 
             class="popup__input popup__input_place_job"
@@ -119,10 +119,10 @@
       <fieldset class="popup__fielset">
         <input 
             type="url" 
-            name="avatarLink" 
+            name="avatar" 
             id="input-avatar"
             placeholder="Ссылка на аватар" 
-            class="popup__input popup__input_avatar_link"
+            class="popup__input popup__input_type_avatar-link"
             title="Введите адрес сайта"
             required
             />
@@ -133,12 +133,11 @@
     <button type="button" class="popup__button-close popup__button-close_type_add"></button>
   </div>    
  </div>
-
  <div class="popup popup_type_delete">
   <div class="popup__container">      
     <h3 class="popup__title">Вы уверены?</h3>
     <form name="delete" class="popup__form popup__form_type_delete">
-      <button type="submit" class="popup__button popup__delete-avatar">Да</button>
+      <button type="submit" class="popup__button popup__delete-card">Да</button>
     </form>      
     <button type="button" class="popup__button-close popup__button-close_type_add"></button>
   </div>    
