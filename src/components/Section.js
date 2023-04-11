@@ -8,11 +8,12 @@ export  default class Section {
     //console.log(this._container)
   }
   // публичный метод, который отвечает за отрисовку всех элементов
-  renderItem() {
-    this._items.forEach((item) => {
+  renderItem(items) {
+    items.forEach((item) => {
       const renderedItem = this._renderer(item);
       this.addItem(renderedItem);
-    })
+      //this._renderer(item)
+    });
   }
   //который принимает DOM-элемент и добавляет его в контейнер.
   addItem(cardElement) {
