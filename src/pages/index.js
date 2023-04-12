@@ -119,10 +119,11 @@ function handleRemoveConfirmSubmit(card) {
  }
  //лайки
 function handleLikeClick(card) {  
-  if ((card.checkLike)) {
+  if (card.checkLike()) {
     api.deleteLikeCard(card.cardId)
-    .then((data) => {
-      card.deleteLike(data.likes.length);      
+    .then((data) => {    
+      card.updateLike(data)      
+      card.deleteLike(data.likes.length);       
     })
     .catch((err) => {
       console.log(err)
@@ -130,12 +131,14 @@ function handleLikeClick(card) {
   } else {
     api.putLikeCard(card.cardId)
     .then((data) => {
-      card.addLike(data.likes.length);     
+      card.updateLike(data)      
+      card.addLike(data.likes.length);
     })
     .catch((err) => {
       console.log(err)
     });  
   }  
+  return(card)
 }
 //данные героя
 function handleFormProfSubmit(data) {

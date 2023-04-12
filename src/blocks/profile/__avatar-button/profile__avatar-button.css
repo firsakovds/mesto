@@ -3,7 +3,7 @@
   background-image: url(/src/images/profile_vector.svg);
   height: 120px;
   width: 120px;
-  position: fixed;
+  position: absolute;
   border-radius: 50%;
   opacity: 0;
   background-repeat: no-repeat;

@@ -16,6 +16,13 @@ export  default class Card {
     const newCard = document.querySelector(this._selectorTemlate).content.querySelector(".element").cloneNode(true);
     return newCard;
   }
+  //новое
+  updateLike(newData) {
+    this._likes = newData.likes
+  } 
+  checkLike() {
+    return this._likes.some((like) => like._id === this._myId);
+  }
   //приватный метод удаления карточки
   deleteCard = () => {
     this._cardElement.remove()
@@ -36,7 +43,7 @@ export  default class Card {
       this._handleBacketButClick(this)
     });
     this._cardLike.addEventListener('click', () => {
-      this._handleLikeClick(this, this.checkLike)
+      this._handleLikeClick(this, this.checkLike())
     });
     //this._cardElement.querySelector('.element__like').addEventListener('click',this._changeLike)    
     this._cardImage.addEventListener('click', () => { 
@@ -54,12 +61,12 @@ export  default class Card {
     this._cardElement.querySelector('.element__title').textContent = this._title
     this._cardLike = this._cardElement.querySelector('.element__like')   
     this.likeCounter = this._cardElement.querySelector('.element__like-counter')
-    this.likeCounter.textContent = this._likes.length    
-    this.checkLike = this._likes.some((like) => like._id === this._myId);
+    this.likeCounter.textContent = this._likes.length
+    //this.checkLike = this._likes.some((like) => like._id === this._myId);
     if (this._ownerId !== this._myId) {
       this._busketBut.remove();
       }
-    if (this._likes.some((like) => like._id === this._myId)) {
+    if (this.checkLike()) {
       this._cardLike.classList.add('element__like_active');
     }  
     this._eventListeners();
